@@ -31,8 +31,10 @@ spec:
   template:
     metadata:
       annotations:
+        {{- if not (and (.Values.controller.service.enabled) (.Values.controller.serviceMonitor.enabled) (.Capabilities.APIVersions.Has "monitoring.coreos.com/v1")) }}
         prometheus.io/path: "/metrics"
         prometheus.io/port: {{ .Values.controller.service.ports.metrics | default 9092 | quote}}
+        {{- end }}
         {{- with $controllerPodAnnotations }}
         {{- toYaml $controllerPodAnnotations | nindent 8 }}
         {{- end }}
