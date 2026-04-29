@@ -20,10 +20,7 @@ spec:
       - {{ .Release.Namespace }}
   selector:
     matchLabels:
-      {{- include "kgateway.labels" . | nindent 6 }}
-      {{- with .Values.controller.service.extraLabels }}
-      {{- toYaml . | nindent 6 }}
-      {{- end }}
+      {{- include "kgateway.selectorLabels" . | nindent 6 }} 
   endpoints:
     - port: metrics
 {{- end -}}
