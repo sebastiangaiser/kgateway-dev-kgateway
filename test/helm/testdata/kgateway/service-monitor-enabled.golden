@@ -412,6 +412,6 @@ spec:
     matchLabels:
       kgateway: kgateway
       app.kubernetes.io/name: kgateway
-      app.kubernetes.io/instance: test-release 
+      app.kubernetes.io/instance: test-release
   endpoints:
     - port: metrics
